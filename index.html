@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>조환영 & 윤지원, 결혼합니다 💍</title>
+
+    <!-- External Libraries -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="2000">
+            <p class="date">2026 / 09 / 05</p>
+            <h1 class="time">SATURDAY 18:30</h1>
+            <p class="venue">세인트메리스 강남</p>
+            <div class="hero-names">
+                <span>조환영</span> & <span>윤지원</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Invitation Section -->
+    <section class="section intro">
+        <h2 data-aos="fade-up" class="section-title">INVITATION</h2>
+        <div class="invitation-text" data-aos="fade-up" data-aos-delay="300">
+            <p>
+                서로가 마주 보며 다져온 사랑을<br>
+                이제 한 곳을 바라보며 걸어가려 합니다.<br>
+                <br>
+                저희 두 사람의 새로운 시작을<br>
+                함께 축복해 주시면 감사하겠습니다.
+            </p>
+        </div>
+        <div class="names-box" data-aos="zoom-in" data-aos-delay="500">
+            <div class="person">
+                <span class="label">GROOM</span>
+                <span class="name">조환영</span>
+            </div>
+            <div class="person">
+                <span class="label">BRIDE</span>
+                <span class="name">윤지원</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="section gallery">
+        <h2 data-aos="fade-up" class="section-title">GALLERY</h2>
+        <div class="gallery-grid" data-aos="fade-up">
+            <!-- Placeholders for gallery images -->
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?auto=format&fit=crop&q=80&w=800')"></div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800')"></div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1520854221250-85d309746a79?auto=format&fit=crop&q=80&w=800')"></div>
+            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507206130118-b5907f817163?auto=format&fit=crop&q=80&w=800')"></div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="section location">
+        <h2 data-aos="fade-up" class="section-title">LOCATION</h2>
+        <p class="address-text" data-aos="fade-up">
+            <strong>세인트메리스 강남</strong><br>
+            서울 특별시 서초구 남부순환로289길 5, 5층<br>
+            (방배동, 삼영빌딩)
+        </p>
+
+        <div id="map" data-aos="fade-up"></div>
+
+        <div data-aos="fade-up" class="map-buttons">
+            <a href="https://map.kakao.com/link/search/세인트메리스강남" target="_blank" class="btn btn-kakao">카카오맵</a>
+            <a href="https://map.naver.com/v5/search/세인트메리스강남" target="_blank" class="btn btn-naver">네이버 지도</a>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section class="section rsvp">
+        <h2 data-aos="fade-up" class="section-title">RSVP</h2>
+        <p class="sub-text" data-aos="fade-up">참석 여부를 알려주세요</p>
+
+        <form id="rsvp-form" class="wedding-form" data-aos="fade-up">
+            <div class="form-group">
+                <input type="text" id="rsvp-name" placeholder="성함" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" id="rsvp-phone" placeholder="연락처 (선택사항)">
+            </div>
+            <div class="form-group radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="attendance" value="attend" checked>
+                    <span>참석</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="attendance" value="decline">
+                    <span>불참</span>
+                </label>
+            </div>
+            <div class="form-group radio-group">
+                <span class="label-text">식사 여부:</span>
+                <label class="radio-label">
+                    <input type="radio" name="meal" value="yes" checked>
+                    <span>예</span>
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="meal" value="no">
+                    <span>아니오</span>
+                </label>
+            </div>
+            <button type="submit" class="btn-submit">마음 전하기</button>
+        </form>
+    </section>
+
+    <!-- Guestbook Section -->
+    <section class="section guestbook">
+        <h2 data-aos="fade-up" class="section-title">GUESTBOOK</h2>
+
+        <form id="guestbook-form" class="wedding-form" data-aos="fade-up">
+            <div class="form-group">
+                <input type="text" id="guest-name" placeholder="이름" required>
+            </div>
+            <div class="form-group">
+                <textarea id="guest-message" placeholder="축하 메시지를 남겨주세요" required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">등록하기</button>
+        </form>
+
+        <div id="guestbook-list" class="guestbook-list" data-aos="fade-up">
+            <!-- Messages will be loaded here -->
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="countdown-container">
+            <p>We are getting married in</p>
+            <div id="countdown"></div>
+        </div>
+        <p class="copyright">© 2026 Hwan-young & Ji-won. All rights reserved.</p>
+        <!-- Secret Admin Trigger -->
+        <div id="admin-trigger" style="opacity: 0; width: 20px; height: 20px; display: inline-block;"></div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad5b8e77dd5d4e2d29139b67a7dafc72"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
