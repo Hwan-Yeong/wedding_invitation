@@ -2,104 +2,299 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>조환영 ♥ 윤지원, 결혼합니다 💍</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>조환영 & 윤지원 결혼합니다</title>
+    <meta property="og:title" content="조환영 & 윤지원 결혼합니다">
+    <meta property="og:description" content="2026년 9월 5일 토요일 오후 6시 30분, 세인트메리스 강남">
+    <meta property="og:image" content="assets/images/hero.jpg">
 
-    <!-- External Libraries -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;1,300&family=Noto+Serif+KR:wght@300;400;500&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
 
-    <!-- Custom CSS -->
+    <!-- Styles -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Kakao Map SDK -->
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad5b8e77dd5d4e2d29139b67a7dafc72"></script>
 </head>
 <body>
 
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content" data-aos="fade-up" data-aos-duration="2000">
-            <p class="date">2026 / 09 / 05</p>
-            <h1 class="time">SATURDAY 18:30</h1>
-            <p class="venue">세인트메리스 강남</p>
+    <header id="home" class="hero">
+        <div class="hero-bg">
+            <img src="assets/images/hero.jpg" alt="Wedding Couple">
+        </div>
+        <div class="hero-content">
+            <div class="hero-title">WEDDING DAY</div>
+            <div class="hero-date">2026. 09. 05</div>
             <div class="hero-names">
-                <span>조환영</span> ♥ <span>윤지원</span>
+                <span>조환영</span>
+                <span class="divider">|</span>
+                <span>윤지원</span>
             </div>
         </div>
     </header>
 
     <!-- Invitation Section -->
-    <section class="section intro">
-        <h2 data-aos="fade-up" class="section-title">INVITATION</h2>
-        <div class="invitation-text" data-aos="fade-up" data-aos-delay="300">
-            <p>
-                서로가 마주 보며 다져온 사랑을<br>
-                이제 한 곳을 바라보며 걸어가려 합니다.<br>
-                <br>
-                저희 두 사람의 새로운 시작을<br>
-                함께 축복해 주시면 감사하겠습니다.
-            </p>
-        </div>
-        <div class="names-box" data-aos="zoom-in" data-aos-delay="500">
-            <div class="person">
-                <span class="label">GROOM</span>
-                <span class="name">조환영</span>
+    <section id="invitation" class="section invitation">
+        <div class="container">
+            <h2 class="section-title">INVITATION</h2>
+            <div class="invitation-text">
+                <p>
+                    살랑이는 바람결에<br>
+                    사랑이 묻어나는 계절입니다.<br>
+                    <br>
+                    저희 두 사람, 믿음과 사랑으로<br>
+                    하나 되어 새 출발을 하려 합니다.<br>
+                    <br>
+                    귀한 걸음 하시어<br>
+                    따뜻한 마음으로 축복해 주시면<br>
+                    더없는 기쁨으로 간직하겠습니다.
+                </p>
             </div>
-            <div class="person">
-                <span class="label">BRIDE</span>
-                <span class="name">윤지원</span>
+
+            <div class="family-info">
+                <div class="groom-side">
+                    <span class="parents">조철수 · 김영희</span>
+                    <span class="relation">의 장남</span>
+                    <span class="name">환영</span>
+                    <a href="tel:01012345678" class="icon-btn"><i class="icon-phone"></i></a>
+                </div>
+                <div class="bride-side">
+                    <span class="parents">윤민수 · 이정숙</span>
+                    <span class="relation">의 장녀</span>
+                    <span class="name">지원</span>
+                    <a href="tel:01087654321" class="icon-btn"><i class="icon-phone"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section id="calendar" class="section calendar-section">
+        <div class="container">
+            <h2 class="section-title">CALENDAR</h2>
+            <div class="calendar-date">
+                2026. 09. 05 <span class="time">토요일 오후 6시 30분</span>
+            </div>
+
+            <div class="calendar-wrapper">
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th class="sun">SUN</th>
+                            <th>MON</th>
+                            <th>TUE</th>
+                            <th>WED</th>
+                            <th>THU</th>
+                            <th>FRI</th>
+                            <th>SAT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- September 2026 -->
+                        <!-- 9/1 is Tuesday -->
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td>4</td>
+                            <td class="d-day">5</td>
+                        </tr>
+                        <tr>
+                            <td class="sun">6</td>
+                            <td>7</td>
+                            <td>8</td>
+                            <td>9</td>
+                            <td>10</td>
+                            <td>11</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td class="sun">13</td>
+                            <td>14</td>
+                            <td>15</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>18</td>
+                            <td>19</td>
+                        </tr>
+                        <tr>
+                            <td class="sun">20</td>
+                            <td>21</td>
+                            <td>22</td>
+                            <td>23</td>
+                            <td>24</td>
+                            <td>25</td>
+                            <td>26</td>
+                        </tr>
+                        <tr>
+                            <td class="sun">27</td>
+                            <td>28</td>
+                            <td>29</td>
+                            <td>30</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="countdown-box">
+                <div class="countdown-item">
+                    <span id="days">00</span>
+                    <span class="label">DAYS</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="hours">00</span>
+                    <span class="label">HOUR</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="minutes">00</span>
+                    <span class="label">MIN</span>
+                </div>
+                <div class="countdown-item">
+                    <span id="seconds">00</span>
+                    <span class="label">SEC</span>
+                </div>
+            </div>
+            <div class="d-day-text">
+                조환영 <span class="heart">♥</span> 윤지원의 결혼식이 <span id="d-day-count">0</span>일 남았습니다.
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section class="section gallery">
-        <h2 data-aos="fade-up" class="section-title">GALLERY</h2>
-        <div class="gallery-grid" data-aos="fade-up">
-            <!-- Placeholders for gallery images -->
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1511285560982-1351cdeb9821?auto=format&fit=crop&q=80&w=800')"></div>
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=800')"></div>
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1520854221250-85d309746a79?auto=format&fit=crop&q=80&w=800')"></div>
-            <div class="gallery-item" style="background-image: url('https://images.unsplash.com/photo-1507206130118-b5907f817163?auto=format&fit=crop&q=80&w=800')"></div>
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <h2 class="section-title">GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="assets/images/gallery1.jpg" alt="Gallery 1"></div>
+                <div class="gallery-item"><img src="assets/images/gallery2.jpg" alt="Gallery 2"></div>
+                <div class="gallery-item"><img src="assets/images/gallery3.jpg" alt="Gallery 3"></div>
+                <div class="gallery-item"><img src="assets/images/hero.jpg" alt="Gallery 4"></div>
+            </div>
         </div>
     </section>
 
     <!-- Location Section -->
-    <section class="section location">
-        <h2 data-aos="fade-up" class="section-title">LOCATION</h2>
-        <p class="address-text" data-aos="fade-up">
-            <strong>세인트메리스 강남</strong><br>
-            서울 특별시 서초구 남부순환로289길 5, 5층<br>
-            (방배동, 삼영빌딩)
-        </p>
+    <section id="location" class="section location">
+        <div class="container">
+            <h2 class="section-title">LOCATION</h2>
+            <div class="venue-info">
+                <h3>세인트메리스 강남</h3>
+                <p>서울 특별시 서초구 남부순환로289길 5, 5층</p>
+                <p class="tel">Tel. 02-123-4567</p>
+            </div>
 
-        <div data-aos="fade-up" class="map-buttons">
-            <a href="https://map.kakao.com/link/search/세인트메리스강남" target="_blank" class="btn btn-kakao">카카오맵</a>
-            <a href="https://map.naver.com/v5/search/세인트메리스강남" target="_blank" class="btn btn-naver">네이버 지도</a>
+            <!-- Map Container -->
+            <div id="map" class="map-container"></div>
+
+            <div class="map-buttons">
+                <a href="https://map.kakao.com/link/to/세인트메리스강남,37.4839,126.9839" target="_blank" class="btn btn-kakao">
+                    <span class="icon">K</span> 카카오내비
+                </a>
+                <a href="https://map.naver.com/v5/search/세인트메리스강남" target="_blank" class="btn btn-naver">
+                    <span class="icon">N</span> 네이버지도
+                </a>
+            </div>
+
+            <div class="transport-info">
+                <div class="transport-item">
+                    <h4>지하철 안내</h4>
+                    <p>남부터미널역(3호선) 3번, 4번 출구 도보 5분</p>
+                </div>
+                <div class="transport-item">
+                    <h4>버스 안내</h4>
+                    <p>국제전자센터 정류장 하차</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- RSVP Section -->
-    <section class="section rsvp">
-        <h2 data-aos="fade-up" class="section-title">RSVP</h2>
-        <p class="sub-text" data-aos="fade-up">참석 여부를 알려주세요</p>
+    <section id="rsvp" class="section rsvp">
+        <div class="container">
+            <h2 class="section-title">RSVP</h2>
+            <p class="rsvp-desc">참석 여부를 알려주시면 예식 준비에 큰 도움이 됩니다.</p>
 
-        <!-- Replace 'YOUR_GOOGLE_FORM_URL' with your actual Google Form URL -->
-        <a href="YOUR_GOOGLE_FORM_URL" target="_blank" class="btn-rsvp" data-aos="zoom-in">
-            참석 의사 전달하기
-        </a>
+            <form id="rsvpForm" class="rsvp-form">
+                <div class="form-group">
+                    <label>구분</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="side" value="groom" checked> 신랑측</label>
+                        <label><input type="radio" name="side" value="bride"> 신부측</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="guestName">성함</label>
+                    <input type="text" id="guestName" name="name" placeholder="성함을 입력해주세요" required>
+                </div>
+                <div class="form-group">
+                    <label for="guestCount">동행인원 (본인 포함)</label>
+                    <select id="guestCount" name="count">
+                        <option value="1">1명</option>
+                        <option value="2">2명</option>
+                        <option value="3">3명</option>
+                        <option value="4">4명</option>
+                        <option value="5">5명 이상</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>식사 여부</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="meal" value="yes" checked> 예정</label>
+                        <label><input type="radio" name="meal" value="no"> 안함</label>
+                        <label><input type="radio" name="meal" value="undecided"> 미정</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">참석 의사 전달하기</button>
+            </form>
+
+            <!-- Admin View Trigger (Hidden or discreet) -->
+            <div class="admin-link" onclick="toggleAdmin()">관리자 보기</div>
+            <div id="adminPanel" class="admin-panel" style="display:none;">
+                <h3>참석 현황</h3>
+                <ul id="rsvpList"></ul>
+            </div>
+        </div>
     </section>
 
-    <footer class="footer">
-        <div class="countdown-container">
-            <p>We are getting married in</p>
-            <div id="countdown"></div>
+    <!-- Guestbook Section -->
+    <section id="guestbook" class="section guestbook">
+        <div class="container">
+            <h2 class="section-title">GUESTBOOK</h2>
+            <div class="guestbook-form">
+                <input type="text" id="gbName" placeholder="이름">
+                <textarea id="gbMessage" placeholder="축하 메시지를 남겨주세요"></textarea>
+                <button onclick="addGuestbookEntry()">등록</button>
+            </div>
+            <div id="guestbookList" class="guestbook-list">
+                <!-- Comments will be loaded here -->
+            </div>
         </div>
-        <p class="copyright">© 2026 Hwan-young & Ji-won. All rights reserved.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <button onclick="shareKakao()">카카오톡 공유</button>
+            <button onclick="copyLink()">링크 복사</button>
+        </div>
+        <p class="copyright">Copyright 2026. Hwan-young & Ji-won. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad5b8e77dd5d4e2d29139b67a7dafc72"></script>
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- App Scripts -->
+    <script src="js/firebase-config.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>
