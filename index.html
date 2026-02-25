@@ -7,7 +7,7 @@
 
     <!-- External Libraries -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
@@ -72,8 +72,6 @@
             (방배동, 삼영빌딩)
         </p>
 
-        <div id="map" data-aos="fade-up"></div>
-
         <div data-aos="fade-up" class="map-buttons">
             <a href="https://map.kakao.com/link/search/세인트메리스강남" target="_blank" class="btn btn-kakao">카카오맵</a>
             <a href="https://map.naver.com/v5/search/세인트메리스강남" target="_blank" class="btn btn-naver">네이버 지도</a>
@@ -85,55 +83,10 @@
         <h2 data-aos="fade-up" class="section-title">RSVP</h2>
         <p class="sub-text" data-aos="fade-up">참석 여부를 알려주세요</p>
 
-        <form id="rsvp-form" class="wedding-form" data-aos="fade-up">
-            <div class="form-group">
-                <input type="text" id="rsvp-name" placeholder="성함" required>
-            </div>
-            <div class="form-group">
-                <input type="tel" id="rsvp-phone" placeholder="연락처 (선택사항)">
-            </div>
-            <div class="form-group radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="attendance" value="attend" checked>
-                    <span>참석</span>
-                </label>
-                <label class="radio-label">
-                    <input type="radio" name="attendance" value="decline">
-                    <span>불참</span>
-                </label>
-            </div>
-            <div class="form-group radio-group">
-                <span class="label-text">식사 여부:</span>
-                <label class="radio-label">
-                    <input type="radio" name="meal" value="yes" checked>
-                    <span>예</span>
-                </label>
-                <label class="radio-label">
-                    <input type="radio" name="meal" value="no">
-                    <span>아니오</span>
-                </label>
-            </div>
-            <button type="submit" class="btn-submit">마음 전하기</button>
-        </form>
-    </section>
-
-    <!-- Guestbook Section -->
-    <section class="section guestbook">
-        <h2 data-aos="fade-up" class="section-title">GUESTBOOK</h2>
-
-        <form id="guestbook-form" class="wedding-form" data-aos="fade-up">
-            <div class="form-group">
-                <input type="text" id="guest-name" placeholder="이름" required>
-            </div>
-            <div class="form-group">
-                <textarea id="guest-message" placeholder="축하 메시지를 남겨주세요" required></textarea>
-            </div>
-            <button type="submit" class="btn-submit">등록하기</button>
-        </form>
-
-        <div id="guestbook-list" class="guestbook-list" data-aos="fade-up">
-            <!-- Messages will be loaded here -->
-        </div>
+        <!-- Replace 'YOUR_GOOGLE_FORM_URL' with your actual Google Form URL -->
+        <a href="YOUR_GOOGLE_FORM_URL" target="_blank" class="btn-rsvp" data-aos="zoom-in">
+            참석 의사 전달하기
+        </a>
     </section>
 
     <footer class="footer">
@@ -142,8 +95,6 @@
             <div id="countdown"></div>
         </div>
         <p class="copyright">© 2026 Hwan-young & Ji-won. All rights reserved.</p>
-        <!-- Secret Admin Trigger -->
-        <div id="admin-trigger" style="opacity: 0; width: 20px; height: 20px; display: inline-block;"></div>
     </footer>
 
     <!-- Scripts -->

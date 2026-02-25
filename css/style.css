@@ -5,8 +5,7 @@
     --text-sub: #666666;
     --point-color: #d4a373;
     --border-color: #e0e0e0;
-    --font-serif: 'Nanum Myeongjo', serif;
-    --font-sans: 'Noto Sans KR', sans-serif;
+    --font-main: 'Gowun Batang', serif;
 }
 
 /* Reset & Global */
@@ -17,7 +16,7 @@
 }
 
 body {
-    font-family: var(--font-sans);
+    font-family: var(--font-main);
     color: var(--text-main);
     background-color: var(--bg-color);
     line-height: 1.6;
@@ -48,7 +47,7 @@ a {
 }
 
 .section-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-main);
     font-size: 1.5rem;
     color: var(--point-color);
     letter-spacing: 2px;
@@ -102,7 +101,7 @@ a {
 }
 
 .hero .time {
-    font-family: var(--font-serif);
+    font-family: var(--font-main);
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 10px;
@@ -116,7 +115,7 @@ a {
 }
 
 .hero-names {
-    font-family: var(--font-serif);
+    font-family: var(--font-main);
     font-size: 1.4rem;
     margin-top: 20px;
     border-top: 1px solid rgba(255,255,255,0.5);
@@ -159,7 +158,7 @@ a {
 }
 
 .names-box .name {
-    font-family: var(--font-serif);
+    font-family: var(--font-main);
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -187,18 +186,13 @@ a {
     font-size: 0.9rem;
 }
 
-#map {
-    width: 100%;
-    height: 350px;
-    margin: 20px 0;
-    border: 1px solid #eee;
-    border-radius: 4px;
-}
+/* Map container removed in HTML, removing style for it too or keep just in case */
 
 .map-buttons {
     display: flex;
     justify-content: center;
     gap: 10px;
+    margin-top: 20px;
 }
 
 .btn {
@@ -208,6 +202,7 @@ a {
     font-weight: 500;
     transition: all 0.3s;
     border: 1px solid #ddd;
+    font-family: var(--font-main);
 }
 
 .btn-kakao {
@@ -220,124 +215,6 @@ a {
     background-color: #03C75A;
     border-color: #03C75A;
     color: #fff;
-}
-
-/* RSVP & Guestbook Forms */
-.wedding-form {
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: left;
-    background: white;
-    padding: 20px;
-    border: 1px solid var(--light-bg);
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group input[type="text"],
-.form-group input[type="tel"],
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 4px;
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    outline: none;
-    transition: border-color 0.3s;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    border-color: var(--point-color);
-}
-
-.form-group textarea {
-    height: 100px;
-    resize: none;
-}
-
-.radio-group {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 0.9rem;
-    margin-top: 10px;
-}
-
-.label-text {
-    margin-right: 10px;
-    font-weight: 500;
-}
-
-.radio-label {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    cursor: pointer;
-}
-
-.radio-label input[type="radio"] {
-    accent-color: var(--point-color);
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 15px;
-    background-color: var(--point-color);
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    font-family: var(--font-serif);
-    transition: background-color 0.3s;
-}
-
-.btn-submit:hover {
-    background-color: #c08e5e;
-}
-
-.sub-text {
-    margin-bottom: 30px;
-    color: var(--text-sub);
-}
-
-/* Guestbook List */
-.guestbook-list {
-    margin-top: 40px;
-    text-align: left;
-}
-
-.guestbook-item {
-    background: var(--light-bg);
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    font-size: 0.9rem;
-}
-
-.guestbook-item .name {
-    font-weight: bold;
-    color: var(--point-color);
-    margin-bottom: 5px;
-    font-family: var(--font-serif);
-}
-
-.guestbook-item .message {
-    color: var(--text-main);
-    white-space: pre-wrap;
-}
-
-.guestbook-item .date {
-    font-size: 0.7rem;
-    color: #999;
-    text-align: right;
-    margin-top: 5px;
 }
 
 /* Footer */
@@ -355,7 +232,7 @@ a {
 }
 
 #countdown {
-    font-family: var(--font-serif);
+    font-family: var(--font-main);
     font-size: 1.5rem;
     font-weight: bold;
     color: var(--point-color);
@@ -365,4 +242,25 @@ a {
 .copyright {
     font-size: 0.7rem;
     color: #aaa;
+}
+
+/* RSVP Button */
+.btn-rsvp {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 18px;
+    background-color: var(--point-color);
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.btn-rsvp:hover {
+    transform: translateY(-2px);
+    background-color: #c08e5e;
 }
