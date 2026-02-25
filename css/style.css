@@ -1,0 +1,266 @@
+:root {
+    --bg-color: #ffffff;
+    --light-bg: #faf7f2;
+    --text-main: #333333;
+    --text-sub: #666666;
+    --point-color: #d4a373;
+    --border-color: #e0e0e0;
+    --font-main: 'Gowun Batang', serif;
+}
+
+/* Reset & Global */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-main);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Constrain width for desktop to look like mobile app */
+body > * {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background: white; /* Ensure content background is white */
+}
+
+/* Make the background outside the mobile view slightly darker on desktop */
+html {
+    background-color: #f0f0f0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    color: var(--point-color);
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--point-color);
+    margin: 10px auto 0;
+}
+
+/* Hero Section */
+.hero {
+    height: 100vh;
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000') center/cover no-repeat;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero .date {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.hero .time {
+    font-family: var(--font-main);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.hero .venue {
+    font-size: 1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+.hero-names {
+    font-family: var(--font-main);
+    font-size: 1.4rem;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255,255,255,0.5);
+    padding: 15px 0;
+    display: inline-block;
+    min-width: 200px;
+}
+
+/* Intro Section */
+.intro {
+    background-color: var(--light-bg);
+}
+
+.invitation-text {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    line-height: 2;
+    margin-bottom: 40px;
+}
+
+.names-box {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+}
+
+.names-box .person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.names-box .label {
+    font-size: 0.7rem;
+    color: var(--point-color);
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.names-box .name {
+    font-family: var(--font-main);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Gallery Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.gallery-item {
+    width: 100%;
+    padding-bottom: 100%; /* Square */
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+}
+
+/* Location Section */
+.address-text {
+    margin-bottom: 20px;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+}
+
+/* Map container removed in HTML, removing style for it too or keep just in case */
+
+.map-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s;
+    border: 1px solid #ddd;
+    font-family: var(--font-main);
+}
+
+.btn-kakao {
+    background-color: #FEE500;
+    border-color: #FEE500;
+    color: #000;
+}
+
+.btn-naver {
+    background-color: #03C75A;
+    border-color: #03C75A;
+    color: #fff;
+}
+
+/* Footer */
+.footer {
+    padding: 60px 20px;
+    background-color: var(--light-bg);
+    text-align: center;
+}
+
+.countdown-container p {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    color: var(--text-sub);
+}
+
+#countdown {
+    font-family: var(--font-main);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--point-color);
+    margin-bottom: 40px;
+}
+
+.copyright {
+    font-size: 0.7rem;
+    color: #aaa;
+}
+
+/* RSVP Button */
+.btn-rsvp {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 18px;
+    background-color: var(--point-color);
+    color: white;
+    text-align: center;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.btn-rsvp:hover {
+    transform: translateY(-2px);
+    background-color: #c08e5e;
+}
