@@ -1,266 +1,492 @@
 :root {
-    --bg-color: #ffffff;
-    --light-bg: #faf7f2;
-    --text-main: #333333;
-    --text-sub: #666666;
-    --point-color: #d4a373;
-    --border-color: #e0e0e0;
-    --font-main: 'Gowun Batang', serif;
+    --primary-color: #333;
+    --secondary-color: #666;
+    --accent-color: #bfa588;
+    --bg-color: #fcfcfc;
+    --white: #ffffff;
+    --font-serif: 'Noto Serif KR', serif;
+    --font-sans: 'Noto Sans KR', sans-serif;
 }
 
-/* Reset & Global */
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
 body {
-    font-family: var(--font-main);
-    color: var(--text-main);
-    background-color: var(--bg-color);
+    font-family: var(--font-sans);
+    background-color: #f0f0f0; /* Outer background */
+    color: var(--primary-color);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
-/* Constrain width for desktop to look like mobile app */
-body > * {
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    background: white; /* Ensure content background is white */
+/* Container for Mobile View */
+.container, header, section, footer {
+    width: 100%;
+    max-width: 480px; /* Mobile width constraint */
+    background-color: var(--bg-color);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Make the background outside the mobile view slightly darker on desktop */
-html {
-    background-color: #f0f0f0;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.section {
-    padding: 80px 20px;
+/* Typography */
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
     text-align: center;
 }
 
 .section-title {
-    font-family: var(--font-main);
     font-size: 1.5rem;
-    color: var(--point-color);
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    position: relative;
-    display: inline-block;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 40px;
-    height: 1px;
-    background: var(--point-color);
-    margin: 10px auto 0;
+    margin-bottom: 2rem;
+    letter-spacing: 0.1em;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    margin-top: 3rem;
 }
 
 /* Hero Section */
 .hero {
     height: 100vh;
     position: relative;
-    background: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1000') center/cover no-repeat;
-    color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    color: var(--white);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-.hero-overlay {
+.hero-bg {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
+}
+
+.hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .hero-content {
     position: relative;
     z-index: 2;
-    padding: 20px;
+    text-align: center;
+    width: 100%;
+    padding-top: 40vh; /* Push text down */
 }
 
-.hero .date {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-    letter-spacing: 2px;
+.hero-title {
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+    font-family: var(--font-serif);
 }
 
-.hero .time {
-    font-family: var(--font-main);
-    font-size: 1.8rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    letter-spacing: 3px;
-}
-
-.hero .venue {
+.hero-date {
     font-size: 1rem;
+    margin-bottom: 2rem;
     opacity: 0.9;
-    margin-bottom: 30px;
 }
 
 .hero-names {
-    font-family: var(--font-main);
-    font-size: 1.4rem;
-    margin-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.5);
-    border-bottom: 1px solid rgba(255,255,255,0.5);
-    padding: 15px 0;
-    display: inline-block;
-    min-width: 200px;
-}
-
-/* Intro Section */
-.intro {
-    background-color: var(--light-bg);
-}
-
-.invitation-text {
-    font-size: 0.95rem;
-    color: var(--text-sub);
-    line-height: 2;
-    margin-bottom: 40px;
-}
-
-.names-box {
+    font-size: 1.8rem;
+    font-family: var(--font-serif);
     display: flex;
     justify-content: center;
-    gap: 40px;
-    margin-top: 30px;
+    align-items: center;
+    gap: 1rem;
 }
 
-.names-box .person {
+.hero-names .divider {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+/* Sections General */
+.section {
+    padding: 4rem 1.5rem;
+    text-align: center;
+}
+
+/* Invitation */
+.invitation-text {
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+    color: var(--secondary-color);
+}
+
+.family-info {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 2rem;
+    font-size: 1rem;
+}
+
+.family-info > div {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 0.5rem;
 }
 
-.names-box .label {
-    font-size: 0.7rem;
-    color: var(--point-color);
-    letter-spacing: 1px;
-    margin-bottom: 5px;
+.family-info .parents {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
 }
 
-.names-box .name {
-    font-family: var(--font-main);
+.family-info .relation {
+    font-size: 0.8rem;
+    color: #999;
+}
+
+.family-info .name {
     font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.icon-btn {
+    text-decoration: none;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+
+/* Calendar */
+.calendar-section {
+    background-color: #f9f9f9;
+}
+
+.calendar-date {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-serif);
+}
+
+.calendar-wrapper {
+    margin: 2rem 0;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-serif);
+}
+
+.calendar-table th {
+    font-weight: 400;
+    color: var(--secondary-color);
+    padding: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.calendar-table td {
+    padding: 1rem 0;
+    font-size: 1rem;
+    color: var(--primary-color);
+    position: relative;
+}
+
+.calendar-table .sun {
+    color: #e57373;
+}
+
+.calendar-table .d-day {
+    color: var(--white);
     font-weight: bold;
 }
 
-/* Gallery Section */
+.calendar-table .d-day::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Countdown */
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.countdown-item span:first-child {
+    font-size: 1.5rem;
+    font-family: var(--font-serif);
+    color: var(--accent-color);
+}
+
+.countdown-item .label {
+    font-size: 0.7rem;
+    color: #999;
+    margin-top: 0.2rem;
+}
+
+.d-day-text {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.d-day-text .heart {
+    color: #e57373;
+}
+
+/* Gallery */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-top: 20px;
+    gap: 0.5rem;
 }
 
 .gallery-item {
     width: 100%;
-    padding-bottom: 100%; /* Square */
-    background-position: center;
-    background-size: cover;
-    border-radius: 4px;
+    aspect-ratio: 1; /* Square images */
+    overflow: hidden;
 }
 
-/* Location Section */
-.address-text {
-    margin-bottom: 20px;
-    color: var(--text-sub);
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Location */
+.venue-info {
+    margin-bottom: 2rem;
+}
+
+.venue-info h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.venue-info p {
+    color: var(--secondary-color);
     font-size: 0.9rem;
 }
 
-/* Map container removed in HTML, removing style for it too or keep just in case */
+.map-container {
+    width: 100%;
+    height: 300px;
+    background-color: #eee;
+    margin-bottom: 1.5rem;
+}
 
 .map-buttons {
     display: flex;
+    gap: 1rem;
     justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
+    margin-bottom: 2rem;
 }
 
 .btn {
-    padding: 12px 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 1.5rem;
     border-radius: 4px;
+    text-decoration: none;
     font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.3s;
-    border: 1px solid #ddd;
-    font-family: var(--font-main);
+    color: var(--white);
+    transition: opacity 0.2s;
+}
+
+.btn:hover {
+    opacity: 0.9;
 }
 
 .btn-kakao {
     background-color: #FEE500;
-    border-color: #FEE500;
-    color: #000;
+    color: #3C1E1E;
 }
 
 .btn-naver {
     background-color: #03C75A;
-    border-color: #03C75A;
-    color: #fff;
+}
+
+.transport-info {
+    text-align: left;
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+}
+
+.transport-item {
+    margin-bottom: 1rem;
+}
+
+.transport-item h4 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+    text-align: left;
+}
+
+.transport-item p {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+/* RSVP */
+.rsvp-form {
+    text-align: left;
+    background-color: #fff;
+    padding: 1.5rem;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+}
+
+.radio-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+input[type="text"], select, textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+/* Guestbook */
+.guestbook-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+.guestbook-form button {
+    padding: 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    cursor: pointer;
+}
+
+.guestbook-list {
+    text-align: left;
+}
+
+.guestbook-entry {
+    background-color: #fff;
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #eee;
+}
+
+.guestbook-entry .name {
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+}
+
+.guestbook-entry .message {
+    font-size: 0.9rem;
+    color: var(--secondary-color);
+}
+
+.guestbook-entry .date {
+    font-size: 0.7rem;
+    color: #ccc;
+    text-align: right;
+    margin-top: 0.5rem;
 }
 
 /* Footer */
 .footer {
-    padding: 60px 20px;
-    background-color: var(--light-bg);
+    padding: 3rem 1.5rem;
+    background-color: #333;
+    color: #999;
     text-align: center;
 }
 
-.countdown-container p {
-    font-size: 0.9rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-    color: var(--text-sub);
+.footer-links {
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
 }
 
-#countdown {
-    font-family: var(--font-main);
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--point-color);
-    margin-bottom: 40px;
+.footer-links button {
+    background: transparent;
+    border: 1px solid #666;
+    color: #ccc;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
 }
 
 .copyright {
-    font-size: 0.7rem;
-    color: #aaa;
+    font-size: 0.8rem;
 }
 
-/* RSVP Button */
-.btn-rsvp {
-    display: block;
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-    padding: 18px;
-    background-color: var(--point-color);
-    color: white;
+/* Admin Panel */
+.admin-link {
     text-align: center;
-    border-radius: 50px;
-    font-size: 1.1rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s;
+    font-size: 0.8rem;
+    color: #ddd;
+    margin-top: 2rem;
+    cursor: pointer;
 }
 
-.btn-rsvp:hover {
-    transform: translateY(-2px);
-    background-color: #c08e5e;
+.admin-panel {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #fff;
+    border: 1px dashed #ccc;
+    text-align: left;
 }
