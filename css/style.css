@@ -1,0 +1,702 @@
+:root {
+    /* Colors */
+    --bg-color: #ffffff;
+    --text-main: #333333;
+    --text-sub: #666666;
+    --accent-color: #a48b6b; /* Muted Gold/Beige */
+    --accent-light: #f5f0eb;
+    --border-color: #e0e0e0;
+    --white: #ffffff;
+
+    /* Fonts */
+    --font-serif-en: 'Crimson Pro', serif;
+    --font-serif-kr: 'Noto Serif KR', serif;
+    --font-sans-kr: 'Noto Sans KR', sans-serif;
+
+    /* Spacing */
+    --spacing-section: 60px;
+    --spacing-container: 24px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sans-kr);
+    background-color: #f0f0f0; /* Desktop background */
+    color: var(--text-main);
+    line-height: 1.6;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+/* Mobile Wrapper */
+.mobile-wrapper {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    overflow-x: hidden;
+}
+
+/* Typography Helpers */
+.section-title {
+    font-family: var(--font-serif-en);
+    font-size: 24px;
+    color: var(--accent-color);
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.section-subtitle {
+    font-family: var(--font-serif-kr);
+    font-size: 18px;
+    color: var(--text-main);
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.section {
+    padding: var(--spacing-section) var(--spacing-container);
+}
+
+.container {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    max-height: 800px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.hero-frame {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 4px; /* Slight round for photo feel */
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text-overlay {
+    padding-top: 30px;
+    text-align: center;
+    background-color: var(--white);
+}
+
+.english-title {
+    font-family: var(--font-serif-en);
+    font-size: 32px;
+    font-weight: 300;
+    color: var(--text-main);
+    margin-bottom: 15px;
+}
+
+.names-area {
+    font-family: var(--font-serif-en);
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: var(--text-main);
+}
+
+.names-area .and {
+    font-style: italic;
+    color: var(--accent-color);
+    margin: 0 5px;
+}
+
+.date-area {
+    font-family: var(--font-sans-kr);
+    font-size: 14px;
+    color: var(--text-sub);
+    letter-spacing: 0.5px;
+}
+
+/* Invitation Section */
+.invitation-section {
+    text-align: center;
+}
+
+.ornament {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.invitation-text {
+    font-family: var(--font-serif-kr);
+    font-size: 15px;
+    line-height: 2.2;
+    color: var(--text-sub);
+    margin-bottom: 40px;
+}
+
+.family-names-box {
+    margin-top: 40px;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 30px 0;
+}
+
+.family-row {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.parents {
+    font-weight: 500;
+}
+
+.relation {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin: 0 8px;
+}
+
+.target-name {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+/* About Us Section */
+.about-section {
+    background-color: var(--accent-light);
+}
+
+.about-card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+}
+
+.card-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-info .tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+}
+
+.card-info h4 {
+    font-family: var(--font-serif-kr);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.card-info p {
+    font-size: 13px;
+    color: var(--text-sub);
+    margin-bottom: 15px;
+}
+
+.contact-btn {
+    display: inline-block;
+    font-size: 13px;
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.contact-btn:hover {
+    background-color: var(--text-main);
+    color: var(--white);
+}
+
+/* Calendar Section */
+.calendar-section {
+    text-align: center;
+}
+
+.calendar-header {
+    font-family: var(--font-serif-en);
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.calendar-wrapper {
+    margin-bottom: 30px;
+}
+
+.calendar-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-serif-en);
+}
+
+.calendar-table th {
+    font-weight: 400;
+    color: var(--text-sub);
+    font-size: 13px;
+    padding-bottom: 15px;
+}
+
+.calendar-table td {
+    height: 40px;
+    font-size: 15px;
+    color: var(--text-main);
+}
+
+.calendar-table .sun {
+    color: #d9534f;
+}
+
+.d-day-mark {
+    background-color: var(--accent-color);
+    color: var(--white) !important;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    line-height: 30px; /* Center text vertically */
+    margin: 0 auto;
+}
+/* Fix for table cell containing the span-like behavior */
+td.d-day-mark {
+    background-color: transparent;
+    color: inherit;
+    position: relative;
+    width: auto;
+    height: auto;
+    display: table-cell;
+}
+td.d-day-mark::before {
+    content: '5';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
+/* Actually, let's just make the cell relative and put a circle behind the number, or style the number itself */
+/* Resetting the previous d-day-mark style attempt */
+
+.calendar-table td {
+    position: relative;
+    z-index: 1;
+}
+
+.d-day-mark {
+    color: white !important;
+}
+
+.d-day-mark::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+
+.d-day-counter {
+    background-color: var(--accent-light);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.heart {
+    color: #d9534f;
+}
+
+.countdown-display {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* Gallery Section */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.gallery-item {
+    aspect-ratio: 1; /* Square images */
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+/* Location Section */
+.venue-name {
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.venue-addr {
+    font-size: 14px;
+    color: var(--text-sub);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.map-container {
+    width: 100%;
+    height: 250px;
+    background-color: #eee;
+    margin-bottom: 15px;
+}
+
+.map-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.map-btn {
+    flex: 1;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 13px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.map-btn.kakao { background-color: #FAE100; color: #3C1E1E; }
+.map-btn.naver { background-color: #03C75A; color: white; }
+.map-btn.tmap { background-color: #E6002D; color: white; }
+
+.transport-info-box {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.info-item {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item i {
+    font-style: normal;
+    font-size: 20px;
+    margin-right: 15px;
+    width: 24px;
+    text-align: center;
+}
+
+.info-item .text strong {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: var(--accent-color);
+}
+
+.info-item .text p {
+    font-size: 13px;
+    color: var(--text-sub);
+}
+
+/* Account Section */
+.account-desc {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-bottom: 30px;
+}
+
+.accordion-item {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    width: 100%;
+    padding: 15px;
+    background: var(--white);
+    border: none;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-header .arrow {
+    font-size: 10px;
+    color: var(--text-sub);
+}
+
+.accordion-content {
+    display: none;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-top: 1px solid var(--border-color);
+}
+
+.account-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.account-row .bank {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.account-row .num {
+    flex: 1;
+    margin: 0 5px;
+    font-family: monospace;
+}
+
+.copy-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+    border: 1px solid var(--border-color);
+    background: var(--white);
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+/* RSVP Section */
+.rsvp-desc {
+    text-align: center;
+    font-size: 14px;
+    color: var(--text-sub);
+    margin-bottom: 30px;
+}
+
+.rsvp-box {
+    background-color: var(--white);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.form-row {
+    margin-bottom: 20px;
+}
+
+.form-row label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-row input[type="text"],
+.form-row select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.radio-options label {
+    display: inline-block;
+    margin-right: 15px;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-color);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.admin-trigger {
+    text-align: center;
+    margin-top: 20px;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.3;
+}
+
+/* Guestbook */
+.guestbook-section {
+    background-color: var(--accent-light);
+}
+
+.guestbook-input-area {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.gb-input, .gb-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.gb-textarea {
+    height: 80px;
+    resize: none;
+}
+
+.gb-submit-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--text-main);
+    color: var(--white);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.guestbook-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.gb-entry {
+    background: var(--white);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.gb-entry .name {
+    font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.gb-entry .msg {
+    color: var(--text-sub);
+    line-height: 1.4;
+}
+
+/* Footer */
+.main-footer {
+    padding: 40px 20px;
+    background-color: #333;
+    color: #999;
+    text-align: center;
+}
+
+.share-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.share-btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 1px solid #555;
+    background: transparent;
+    color: #ccc;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.share-btn.kakao {
+    background-color: #FAE100;
+    color: #3C1E1E;
+    border: none;
+}
+
+.copyright {
+    font-size: 11px;
+    line-height: 1.6;
+}
