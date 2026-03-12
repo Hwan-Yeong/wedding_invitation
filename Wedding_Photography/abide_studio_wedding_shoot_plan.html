@@ -81,8 +81,8 @@
     <header class="bg-gradient-to-b from-rose-50 to-[#faf9f7] py-16 text-center px-4">
         <div class="max-w-3xl mx-auto">
             <div class="text-4xl mb-4">💍</div>
-            <h1 class="text-4xl md:text-5xl font-bold text-zinc-800 mb-4" data-field="main_title">웨딩 촬영 디지털 시안</h1>
-            <p class="text-lg md:text-xl text-zinc-600 mb-8" data-field="sub_title">어바이드 스튜디오 (구 그가사랑하는순간)</p>
+            <h1 class="text-4xl md:text-5xl font-bold text-zinc-800 mb-4" data-field="main_title">웨딩 촬영 시안</h1>
+            <p class="text-lg md:text-xl text-zinc-600 mb-8" data-field="sub_title">어바이드 스튜디오</p>
             
             <div class="inline-flex flex-col bg-white px-8 py-6 rounded-2xl shadow-sm border border-rose-100">
                 <span class="text-sm text-rose-400 font-semibold tracking-wider uppercase mb-2">D-Day Countdown</span>
@@ -132,19 +132,19 @@
                     <div class="grid grid-cols-2 gap-4 text-sm text-zinc-600">
                         <div>
                             <span class="block text-xs text-zinc-400 mb-1">드레스 샵</span>
-                            <span class="font-medium text-zinc-700" data-field="shop_dress">OOO 드레스</span>
+                            <span class="font-medium text-zinc-700" data-field="shop_dress">아뜰리에로리에</span>
                         </div>
                         <div>
                             <span class="block text-xs text-zinc-400 mb-1">메이크업</span>
-                            <span class="font-medium text-zinc-700" data-field="shop_makeup">OOO (지정 원장)</span>
+                            <span class="font-medium text-zinc-700" data-field="shop_makeup">드이희 (우정 실장)</span>
                         </div>
                         <div>
                             <span class="block text-xs text-zinc-400 mb-1">헤어 변형</span>
-                            <span class="font-medium text-zinc-700" data-field="shop_hair">OOO (3시간 진행)</span>
+                            <span class="font-medium text-zinc-700" data-field="shop_hair">드이희 수연 부원장 (11~15 4시간 진행)</span>
                         </div>
                         <div>
                             <span class="block text-xs text-zinc-400 mb-1">예복 (테일러샵)</span>
-                            <span class="font-medium text-zinc-700" data-field="shop_tailor">OOO 테일러</span>
+                            <span class="font-medium text-zinc-700" data-field="shop_tailor">보헨</span>
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,15 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                 <div class="lg:col-span-2 space-y-4">
                     <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-200">
-                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">1</div>
+                        <div class="w-16 h-16 bg-rose-50 rounded-lg flex flex-col items-center justify-center text-rose-500 font-bold mr-4 shrink-0 overflow-hidden relative group cursor-pointer border border-rose-100 hover:border-rose-300 transition-colors" onclick="document.getElementById('file_outfit_1').click()" title="드레스/예복 사진 등록">
+                            <img id="img_outfit_1" src="" class="hidden w-full h-full object-cover z-10" data-img-field="outfit_1_img">
+                            <button id="del_outfit_1" class="hidden absolute top-1 right-1 w-5 h-5 bg-black/60 text-white rounded-full flex items-center justify-center text-xs z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'outfit_1_img')" title="사진 삭제">✕</button>
+                            <div id="placeholder_outfit_1" class="text-center absolute z-0">
+                                <span class="text-lg">1</span>
+                                <span class="text-[10px] block font-normal text-rose-400 mt-0.5">사진첨부</span>
+                            </div>
+                            <input type="file" id="file_outfit_1" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'outfit_1_img')">
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-sm">
                             <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium" data-field="outfit_1_bride">풍성 (실크/레이스)</span></div>
                             <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium" data-field="outfit_1_hair">긴 머리 웨이브 (푼 머리)</span></div>
@@ -168,7 +176,15 @@
                     </div>
 
                     <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-300">
-                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">2</div>
+                        <div class="w-16 h-16 bg-rose-50 rounded-lg flex flex-col items-center justify-center text-rose-500 font-bold mr-4 shrink-0 overflow-hidden relative group cursor-pointer border border-rose-100 hover:border-rose-300 transition-colors" onclick="document.getElementById('file_outfit_2').click()" title="드레스/예복 사진 등록">
+                            <img id="img_outfit_2" src="" class="hidden w-full h-full object-cover z-10" data-img-field="outfit_2_img">
+                            <button id="del_outfit_2" class="hidden absolute top-1 right-1 w-5 h-5 bg-black/60 text-white rounded-full flex items-center justify-center text-xs z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'outfit_2_img')" title="사진 삭제">✕</button>
+                            <div id="placeholder_outfit_2" class="text-center absolute z-0">
+                                <span class="text-lg">2</span>
+                                <span class="text-[10px] block font-normal text-rose-400 mt-0.5">사진첨부</span>
+                            </div>
+                            <input type="file" id="file_outfit_2" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'outfit_2_img')">
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-sm">
                             <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium" data-field="outfit_2_bride">슬림 (실크)</span></div>
                             <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium" data-field="outfit_2_hair">반묶음 (생화 장식)</span></div>
@@ -177,7 +193,15 @@
                     </div>
 
                     <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-400">
-                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">3</div>
+                        <div class="w-16 h-16 bg-rose-50 rounded-lg flex flex-col items-center justify-center text-rose-500 font-bold mr-4 shrink-0 overflow-hidden relative group cursor-pointer border border-rose-100 hover:border-rose-300 transition-colors" onclick="document.getElementById('file_outfit_3').click()" title="드레스/예복 사진 등록">
+                            <img id="img_outfit_3" src="" class="hidden w-full h-full object-cover z-10" data-img-field="outfit_3_img">
+                            <button id="del_outfit_3" class="hidden absolute top-1 right-1 w-5 h-5 bg-black/60 text-white rounded-full flex items-center justify-center text-xs z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'outfit_3_img')" title="사진 삭제">✕</button>
+                            <div id="placeholder_outfit_3" class="text-center absolute z-0">
+                                <span class="text-lg">3</span>
+                                <span class="text-[10px] block font-normal text-rose-400 mt-0.5">사진첨부</span>
+                            </div>
+                            <input type="file" id="file_outfit_3" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'outfit_3_img')">
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-sm">
                             <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium" data-field="outfit_3_bride">슬림 (레이스/비즈)</span></div>
                             <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium" data-field="outfit_3_hair">로우 포니테일</span></div>
@@ -186,7 +210,15 @@
                     </div>
 
                     <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-500">
-                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">4</div>
+                        <div class="w-16 h-16 bg-rose-50 rounded-lg flex flex-col items-center justify-center text-rose-500 font-bold mr-4 shrink-0 overflow-hidden relative group cursor-pointer border border-rose-100 hover:border-rose-300 transition-colors" onclick="document.getElementById('file_outfit_4').click()" title="드레스/예복 사진 등록">
+                            <img id="img_outfit_4" src="" class="hidden w-full h-full object-cover z-10" data-img-field="outfit_4_img">
+                            <button id="del_outfit_4" class="hidden absolute top-1 right-1 w-5 h-5 bg-black/60 text-white rounded-full flex items-center justify-center text-xs z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'outfit_4_img')" title="사진 삭제">✕</button>
+                            <div id="placeholder_outfit_4" class="text-center absolute z-0">
+                                <span class="text-lg">4</span>
+                                <span class="text-[10px] block font-normal text-rose-400 mt-0.5">사진첨부</span>
+                            </div>
+                            <input type="file" id="file_outfit_4" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'outfit_4_img')">
+                        </div>
                         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full text-sm">
                             <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium" data-field="outfit_4_bride">유색 드레스 / 캐주얼</span></div>
                             <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium" data-field="outfit_4_hair">로우 번 (가시번 등)</span></div>
@@ -211,9 +243,15 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Scene 1 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group">
-                    <div class="bg-stone-100 p-8 text-center border-b border-stone-200 relative">
-                        <span class="text-5xl">🪟</span>
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="bg-stone-100 relative aspect-video flex items-center justify-center border-b border-stone-200 cursor-pointer hover:bg-stone-200 transition-colors" onclick="document.getElementById('file_scene_1').click()" title="레퍼런스 사진 등록/변경">
+                        <img id="img_scene_1" src="" class="hidden w-full h-full object-cover z-10" data-img-field="scene_1_img">
+                        <button id="del_scene_1" class="hidden absolute top-2 right-2 w-8 h-8 bg-black/60 text-white rounded-full flex items-center justify-center text-sm z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'scene_1_img')" title="사진 삭제">✕</button>
+                        <div id="placeholder_scene_1" class="text-center absolute z-0">
+                            <span class="text-5xl block mb-2 opacity-80">🪟</span>
+                            <span class="text-xs text-zinc-600 font-medium px-3 py-1 bg-white/70 backdrop-blur rounded-full border border-white/50">사진 첨부 (클릭)</span>
+                        </div>
+                        <input type="file" id="file_scene_1" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'scene_1_img')">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
@@ -228,9 +266,15 @@
                 </div>
 
                 <!-- Scene 2 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group">
-                    <div class="bg-rose-50 p-8 text-center border-b border-stone-200 relative">
-                        <span class="text-5xl">⬜</span>
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="bg-rose-50 relative aspect-video flex items-center justify-center border-b border-stone-200 cursor-pointer hover:bg-rose-100 transition-colors" onclick="document.getElementById('file_scene_2').click()" title="레퍼런스 사진 등록/변경">
+                        <img id="img_scene_2" src="" class="hidden w-full h-full object-cover z-10" data-img-field="scene_2_img">
+                        <button id="del_scene_2" class="hidden absolute top-2 right-2 w-8 h-8 bg-black/60 text-white rounded-full flex items-center justify-center text-sm z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'scene_2_img')" title="사진 삭제">✕</button>
+                        <div id="placeholder_scene_2" class="text-center absolute z-0">
+                            <span class="text-5xl block mb-2 opacity-80">⬜</span>
+                            <span class="text-xs text-zinc-600 font-medium px-3 py-1 bg-white/70 backdrop-blur rounded-full border border-white/50">사진 첨부 (클릭)</span>
+                        </div>
+                        <input type="file" id="file_scene_2" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'scene_2_img')">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
@@ -245,9 +289,15 @@
                 </div>
 
                 <!-- Scene 3 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group">
-                    <div class="bg-stone-100 p-8 text-center border-b border-stone-200 relative">
-                        <span class="text-5xl">🛋️</span>
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="bg-stone-100 relative aspect-video flex items-center justify-center border-b border-stone-200 cursor-pointer hover:bg-stone-200 transition-colors" onclick="document.getElementById('file_scene_3').click()" title="레퍼런스 사진 등록/변경">
+                        <img id="img_scene_3" src="" class="hidden w-full h-full object-cover z-10" data-img-field="scene_3_img">
+                        <button id="del_scene_3" class="hidden absolute top-2 right-2 w-8 h-8 bg-black/60 text-white rounded-full flex items-center justify-center text-sm z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'scene_3_img')" title="사진 삭제">✕</button>
+                        <div id="placeholder_scene_3" class="text-center absolute z-0">
+                            <span class="text-5xl block mb-2 opacity-80">🛋️</span>
+                            <span class="text-xs text-zinc-600 font-medium px-3 py-1 bg-white/70 backdrop-blur rounded-full border border-white/50">사진 첨부 (클릭)</span>
+                        </div>
+                        <input type="file" id="file_scene_3" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'scene_3_img')">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
@@ -262,9 +312,15 @@
                 </div>
 
                 <!-- Scene 4 -->
-                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow group">
-                    <div class="bg-stone-800 p-8 text-center border-b border-stone-200 relative">
-                        <span class="text-5xl">✨</span>
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden group hover:shadow-md transition-shadow">
+                    <div class="bg-stone-800 relative aspect-video flex items-center justify-center border-b border-stone-200 cursor-pointer hover:bg-stone-700 transition-colors" onclick="document.getElementById('file_scene_4').click()" title="레퍼런스 사진 등록/변경">
+                        <img id="img_scene_4" src="" class="hidden w-full h-full object-cover z-10" data-img-field="scene_4_img">
+                        <button id="del_scene_4" class="hidden absolute top-2 right-2 w-8 h-8 bg-black/60 text-white rounded-full flex items-center justify-center text-sm z-20 hover:bg-black/80 transition-colors" onclick="window.removeImage(event, 'scene_4_img')" title="사진 삭제">✕</button>
+                        <div id="placeholder_scene_4" class="text-center absolute z-0">
+                            <span class="text-5xl block mb-2 opacity-80">✨</span>
+                            <span class="text-xs text-zinc-800 font-medium px-3 py-1 bg-white/70 backdrop-blur rounded-full border border-white/50">사진 첨부 (클릭)</span>
+                        </div>
+                        <input type="file" id="file_scene_4" class="hidden" accept="image/*" onchange="window.handleImageUpload(event, 'scene_4_img')">
                     </div>
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-4">
@@ -460,14 +516,13 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, onSnapshot, deleteField } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Firebase 초기화 (시스템 환경변수 활용)
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'wedding-plan-app';
+        // 환경 체크: Canvas 내장 환경인지, 외부 호스팅(GitHub Pages 등)인지 판별
+        const isCanvasEnv = typeof __firebase_config !== 'undefined';
+        
+        let db, docRef, imgDocRef, auth;
+        let isUpdatingFromRemote = false;
 
         // 상태 UI 업데이트 함수
         const statusEl = document.getElementById('save-status');
@@ -480,22 +535,14 @@
                 statusEl.innerText = '저장 완료';
                 statusEl.classList.replace('bg-yellow-400/80', 'bg-white/20');
                 statusEl.classList.replace('text-yellow-900', 'text-white');
+            } else if (status === 'local') {
+                statusEl.innerText = '로컬 저장됨';
+                statusEl.classList.replace('bg-white/20', 'bg-blue-400/80');
+                statusEl.classList.replace('text-blue-400/80', 'bg-blue-500'); // GitHub Pages UI 표시용
             }
         }
 
-        // 인증 처리
-        const initAuth = async () => {
-            if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                await signInWithCustomToken(auth, __initial_auth_token);
-            } else {
-                await signInAnonymously(auth);
-            }
-        };
-        initAuth();
-
-        let isUpdatingFromRemote = false;
-
-        // 디바운스 함수 (타이핑 중 계속 저장되는 것을 방지, 0.5초 대기 후 저장)
+        // 디바운스 함수 (타이핑 중 계속 저장되는 것을 방지)
         function debounce(func, wait) {
             let timeout;
             return function(...args) {
@@ -504,160 +551,257 @@
             };
         }
 
-        onAuthStateChanged(auth, (user) => {
-            if (!user) return;
-            
-            // 데이터베이스 문서 위치 설정 (수정됨: 경로 세그먼트를 짝수로 맞춤)
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'wedding_boards', 'main_board');
-
-            // 1. 데이터베이스 변경사항 실시간 감지 및 화면 업데이트
-            onSnapshot(docRef, (docSnap) => {
-                if (docSnap.exists()) {
-                    isUpdatingFromRemote = true; // 화면 업데이트 중임을 표시
-                    const data = docSnap.data();
-                    
-                    document.querySelectorAll('[data-field]').forEach(el => {
-                        const fieldName = el.getAttribute('data-field');
-                        if (data[fieldName] !== undefined) {
-                            if (el.type === 'checkbox') {
-                                el.checked = data[fieldName];
-                            } else if (el.type === 'date') {
-                                el.value = data[fieldName];
-                            } else {
-                                // 현재 편집 중인 요소가 아니라면 텍스트 갱신 (커서 튐 방지)
-                                if (document.activeElement !== el && el.innerText !== data[fieldName]) {
-                                    el.innerText = data[fieldName];
-                                }
-                            }
-                        }
-                    });
-                    
-                    updateProgress(); // 체크박스 차트 갱신
-                    updateCountdown(); // D-Day 갱신
-                    isUpdatingFromRemote = false;
-                }
-            }, (error) => console.error("Firebase Sync Error:", error));
-
-            // 2. 화면에서 변경된 내용을 데이터베이스에 저장
-            const saveToDb = debounce((field, value) => {
-                if(isUpdatingFromRemote) return;
-                setSaveStatus('saving');
-                setDoc(docRef, { [field]: value }, { merge: true })
-                    .then(() => setSaveStatus('saved'))
-                    .catch(e => console.error("Save Error", e));
-            }, 500);
-
-            // 3. 모든 [data-field] 요소에 이벤트 및 편집 기능 부여
-            document.querySelectorAll('[data-field]').forEach(el => {
-                const fieldName = el.getAttribute('data-field');
-
-                if (el.type === 'checkbox') {
-                    el.addEventListener('change', (e) => {
-                        saveToDb(fieldName, e.target.checked);
-                        updateProgress();
-                    });
-                } else if (el.type === 'date') {
-                    el.addEventListener('change', (e) => {
-                        saveToDb(fieldName, e.target.value);
-                        updateCountdown();
-                    });
-                } else {
-                    // 텍스트 영역을 클릭해서 수정 가능하도록 만듦
-                    el.setAttribute('contenteditable', 'true');
-                    el.classList.add('editable');
-                    
-                    el.addEventListener('input', (e) => {
-                        saveToDb(fieldName, e.target.innerText);
-                    });
-                }
-            });
+        // 1. 차트 및 진행도 관련 로직 (호이스팅을 위해 최상단에 배치)
+        const totalItems = document.querySelectorAll('.check-item').length;
+        const progressText = document.getElementById('progress-text');
+        
+        const ctxProgress = document.getElementById('progressChart').getContext('2d');
+        const progressChart = new Chart(ctxProgress, {
+            type: 'doughnut',
+            data: { labels: ['준비 완료', '남은 항목'], datasets: [{ data: [0, totalItems], backgroundColor: ['#10b981', '#e5e7eb'], borderWidth: 0, cutout: '75%' }] },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, animation: { animateScale: true } }
         });
 
-        // --------------------------------------------------------
-        // 기존 UI 및 차트 관련 스크립트
-        // --------------------------------------------------------
+        window.updateProgress = function() {
+            let checkedCount = 0;
+            document.querySelectorAll('.check-item').forEach(cb => { if(cb.checked) checkedCount++; });
+            const percent = Math.round((checkedCount / totalItems) * 100);
+            progressText.innerText = percent + '%';
+            if(percent === 100) { progressText.classList.replace('text-rose-500', 'text-green-500'); } 
+            else { progressText.classList.replace('text-green-500', 'text-rose-500'); }
+            progressChart.data.datasets[0].data = [checkedCount, totalItems - checkedCount];
+            progressChart.update();
+        }
 
         function updateCountdown() {
             const dateInput = document.getElementById('dday-input').value;
             const targetDate = new Date(`${dateInput}T00:00:00`).getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
-
             const countdownEl = document.getElementById("countdown");
 
             if (distance < 0) {
                 countdownEl.innerHTML = "촬영이 시작되었습니다!";
-                countdownEl.classList.remove('text-zinc-700');
-                countdownEl.classList.add('text-rose-500');
+                countdownEl.classList.replace('text-zinc-700', 'text-rose-500');
                 return;
             }
-
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
             countdownEl.innerHTML = `D-${days}`;
-            countdownEl.classList.add('text-zinc-700');
-            countdownEl.classList.remove('text-rose-500');
+            countdownEl.classList.replace('text-rose-500', 'text-zinc-700');
         }
-        setInterval(updateCountdown, 60000); // 1분마다 갱신
-        
-        // 차트 초기화: 시간 분배
+        setInterval(updateCountdown, 60000);
+
         const ctxTime = document.getElementById('timeChart').getContext('2d');
-        const timeChart = new Chart(ctxTime, {
+        new Chart(ctxTime, {
             type: 'doughnut',
-            data: {
-                labels: ['1벌 (풍성)', '2벌 (슬림)', '3벌 (레이스)', '4벌 (유색)'],
-                datasets: [{
-                    data: [30, 25, 25, 20],
-                    backgroundColor: ['rgba(251, 113, 133, 0.8)', 'rgba(244, 63, 94, 0.8)', 'rgba(225, 29, 72, 0.8)', 'rgba(159, 18, 57, 0.8)'],
-                    borderWidth: 0
-                }]
-            },
+            data: { labels: ['1벌 (풍성)', '2벌 (슬림)', '3벌 (레이스)', '4벌 (유색)'], datasets: [{ data: [30, 25, 25, 20], backgroundColor: ['rgba(251, 113, 133, 0.8)', 'rgba(244, 63, 94, 0.8)', 'rgba(225, 29, 72, 0.8)', 'rgba(159, 18, 57, 0.8)'], borderWidth: 0 }] },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
         });
 
-        // 차트 초기화: 체크리스트 진행도
-        const checkboxes = document.querySelectorAll('.check-item');
-        const totalItems = checkboxes.length;
-        const progressText = document.getElementById('progress-text');
-        
-        const ctxProgress = document.getElementById('progressChart').getContext('2d');
-        const progressChart = new Chart(ctxProgress, {
-            type: 'doughnut',
-            data: {
-                labels: ['준비 완료', '남은 항목'],
-                datasets: [{ data: [0, totalItems], backgroundColor: ['#10b981', '#e5e7eb'], borderWidth: 0, cutout: '75%' }]
-            },
-            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false }, tooltip: { enabled: false } }, animation: { animateScale: true } }
+        // 2. 공통 UI 조작 로직 (이미지 토글)
+        window.updateImageUI = function(fieldName, base64) {
+            const imgEl = document.querySelector(`[data-img-field="${fieldName}"]`);
+            if (!imgEl) return;
+            
+            const placeholderId = imgEl.id.replace('img_', 'placeholder_');
+            const delBtnId = imgEl.id.replace('img_', 'del_');
+            const placeholderEl = document.getElementById(placeholderId);
+            const delBtn = document.getElementById(delBtnId);
+
+            if (base64) {
+                imgEl.src = base64;
+                imgEl.classList.remove('hidden');
+                if(placeholderEl) placeholderEl.classList.add('hidden');
+                if(delBtn) delBtn.classList.remove('hidden');
+            } else {
+                imgEl.src = '';
+                imgEl.classList.add('hidden');
+                if(placeholderEl) placeholderEl.classList.remove('hidden');
+                if(delBtn) delBtn.classList.add('hidden');
+            }
+        };
+
+        // 3. 업로드 및 삭제 로직
+        window.handleImageUpload = function(event, fieldName) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            setSaveStatus('saving');
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const MAX_WIDTH = 800; 
+                    let width = img.width;
+                    let height = img.height;
+
+                    if (width > MAX_WIDTH) {
+                        height = Math.round((height * MAX_WIDTH) / width);
+                        width = MAX_WIDTH;
+                    }
+                    canvas.width = width;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6);
+
+                    if (isCanvasEnv && imgDocRef) {
+                        setDoc(imgDocRef, { [fieldName]: compressedDataUrl }, { merge: true })
+                            .then(() => setSaveStatus('saved'))
+                            .catch(e => { console.error(e); setSaveStatus('saved'); });
+                    } else {
+                        try {
+                            localStorage.setItem('img_' + fieldName, compressedDataUrl);
+                            window.updateImageUI(fieldName, compressedDataUrl);
+                            setSaveStatus('local');
+                        } catch(e) {
+                            alert("사진 용량이 너무 큽니다. 캐시를 지우거나 다른 기기를 사용해주세요.");
+                            setSaveStatus('local');
+                        }
+                    }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        };
+
+        window.removeImage = function(e, fieldName) {
+            e.stopPropagation();
+            e.preventDefault();
+            
+            if (confirm("첨부된 사진을 삭제하시겠습니까?")) {
+                setSaveStatus('saving');
+                if (isCanvasEnv && imgDocRef) {
+                    setDoc(imgDocRef, { [fieldName]: deleteField() }, { merge: true })
+                        .then(() => setSaveStatus('saved'))
+                        .catch(e => console.error(e));
+                } else {
+                    localStorage.removeItem('img_' + fieldName);
+                    window.updateImageUI(fieldName, null);
+                    setSaveStatus('local');
+                }
+            }
+        };
+
+        const saveToDb = debounce((field, value) => {
+            if(isUpdatingFromRemote) return;
+            setSaveStatus('saving');
+            
+            if (isCanvasEnv && docRef) {
+                setDoc(docRef, { [field]: value }, { merge: true })
+                    .then(() => setSaveStatus('saved'))
+                    .catch(e => console.error(e));
+            } else {
+                localStorage.setItem(field, value);
+                setTimeout(() => setSaveStatus('local'), 300);
+            }
+        }, 500);
+
+        // 4. 리스너 등록
+        document.querySelectorAll('[data-field]').forEach(el => {
+            const fieldName = el.getAttribute('data-field');
+            if (el.type === 'checkbox') {
+                el.addEventListener('change', (e) => { saveToDb(fieldName, e.target.checked); window.updateProgress(); });
+            } else if (el.type === 'date') {
+                el.addEventListener('change', (e) => { saveToDb(fieldName, e.target.value); updateCountdown(); });
+            } else {
+                el.setAttribute('contenteditable', 'true');
+                el.classList.add('editable');
+                el.addEventListener('input', (e) => { saveToDb(fieldName, e.target.innerText); });
+            }
         });
 
-        // 진행도 업데이트 함수
-        window.updateProgress = function() {
-            let checkedCount = 0;
-            document.querySelectorAll('.check-item').forEach(cb => {
-                if(cb.checked) checkedCount++;
-            });
-
-            const percent = Math.round((checkedCount / totalItems) * 100);
-            progressText.innerText = percent + '%';
-
-            if(percent === 100) {
-                progressText.classList.remove('text-rose-500');
-                progressText.classList.add('text-green-500');
-            } else {
-                progressText.classList.remove('text-green-500');
-                progressText.classList.add('text-rose-500');
-            }
-
-            progressChart.data.datasets[0].data = [checkedCount, totalItems - checkedCount];
-            progressChart.update();
-        }
-
-        // 네비게이션 부드러운 스크롤
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
             });
         });
+
+
+        // 5. 환경 분기 초기화 로직
+        if (isCanvasEnv) {
+            // [A] Canvas 내부 환경
+            const firebaseConfig = JSON.parse(__firebase_config);
+            const app = initializeApp(firebaseConfig);
+            auth = getAuth(app);
+            db = getFirestore(app);
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'wedding-plan-app';
+            
+            docRef = doc(db, 'artifacts', appId, 'public', 'data', 'wedding_boards', 'main_board');
+            imgDocRef = doc(db, 'artifacts', appId, 'public', 'data', 'wedding_boards', 'images_board');
+
+            const initAuth = async () => {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+            };
+            initAuth();
+
+            onAuthStateChanged(auth, (user) => {
+                if (!user) return;
+                
+                onSnapshot(docRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        isUpdatingFromRemote = true;
+                        const data = docSnap.data();
+                        document.querySelectorAll('[data-field]').forEach(el => {
+                            const fieldName = el.getAttribute('data-field');
+                            if (data[fieldName] !== undefined) {
+                                if (el.type === 'checkbox') el.checked = data[fieldName];
+                                else if (el.type === 'date') el.value = data[fieldName];
+                                else if (document.activeElement !== el && el.innerText !== data[fieldName]) {
+                                    el.innerText = data[fieldName];
+                                }
+                            }
+                        });
+                        window.updateProgress();
+                        updateCountdown();
+                        isUpdatingFromRemote = false;
+                    }
+                });
+
+                onSnapshot(imgDocRef, (docSnap) => {
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        document.querySelectorAll('[data-img-field]').forEach(imgEl => {
+                            const fieldName = imgEl.getAttribute('data-img-field');
+                            window.updateImageUI(fieldName, data[fieldName] || null);
+                        });
+                    }
+                });
+            });
+
+        } else {
+            // [B] GitHub Pages 환경 (LocalStorage 로드)
+            console.log("GitHub 호스팅 모드: 브라우저 캐시에 데이터를 저장합니다.");
+            statusEl.innerText = "로컬 모드 (현재 기기에만 저장)";
+            statusEl.classList.replace('bg-white/20', 'bg-blue-500');
+            
+            document.querySelectorAll('[data-field]').forEach(el => {
+                const fieldName = el.getAttribute('data-field');
+                const savedVal = localStorage.getItem(fieldName);
+                if (savedVal !== null) {
+                    if (el.type === 'checkbox') el.checked = (savedVal === 'true');
+                    else if (el.type === 'date') el.value = savedVal;
+                    else el.innerText = savedVal;
+                }
+            });
+
+            document.querySelectorAll('[data-img-field]').forEach(imgEl => {
+                const fieldName = imgEl.getAttribute('data-img-field');
+                const savedBase64 = localStorage.getItem('img_' + fieldName);
+                if(savedBase64) window.updateImageUI(fieldName, savedBase64);
+            });
+
+            window.updateProgress();
+            updateCountdown();
+        }
     </script>
 </body>
 </html>
