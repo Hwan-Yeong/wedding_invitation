@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어바이드 웨딩 촬영 디지털 시안보드</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Nanum+Myeongjo:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #faf9f7;
+            color: #3f3f46;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 30vh;
+            max-height: 350px;
+            min-height: 250px;
+        }
+
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Chosen Palette: Warm Neutrals & Soft Peach (Background: #faf9f7 (stone-50), Accents: rose-100, rose-400, Text: zinc-700) -->
+    <!-- Application Structure Plan: The SPA is structured as a unified "Digital Shoot Dashboard". It transforms the linear document into task-oriented and thematic views. A top sticky navigation allows quick jumps. The "Overview" sets the tone. The "Timeline" visually organizes outfit changes. The "Scene Guide" acts as an interactive mood board. The "Checklist" is a functional tool with a dynamic progress chart to ensure readiness. This layout maximizes utility for the couple, photographer, and helpers during the chaotic preparation and actual shoot day. -->
+    <!-- Visualization & Content Choices: 1. Overview: Clean text cards for immediate basic info retrieval. 2. Outfit Timeline: A horizontal/vertical flex layout to show flow, paired with a Doughnut chart showing 'Estimated Time Allocation' to help helpers manage time. 3. Scene Guide: Interactive grid cards that reveal details on hover/click, acting as a digital mood board. 4. Checklist: Interactive HTML checkboxes linked to a dynamic Doughnut chart (Chart.js) to visually motivate and track packing progress. NO SVG or Mermaid is used; Unicode icons provide visual cues. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-rose-100 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-bold text-rose-500 serif">Abide.</span>
+                </div>
+                <div class="flex items-center space-x-4 overflow-x-auto hide-scroll text-sm font-medium">
+                    <a href="#overview" class="text-zinc-600 hover:text-rose-500 whitespace-nowrap">기본정보</a>
+                    <a href="#timeline" class="text-zinc-600 hover:text-rose-500 whitespace-nowrap">의상·헤어</a>
+                    <a href="#scenes" class="text-zinc-600 hover:text-rose-500 whitespace-nowrap">촬영씬</a>
+                    <a href="#rules" class="text-zinc-600 hover:text-rose-500 whitespace-nowrap">요청사항</a>
+                    <a href="#checklist" class="text-zinc-600 hover:text-rose-500 whitespace-nowrap">체크리스트</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="bg-gradient-to-b from-rose-50 to-[#faf9f7] py-16 text-center px-4">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-4xl mb-4">💍</div>
+            <h1 class="text-4xl md:text-5xl font-bold text-zinc-800 mb-4">웨딩 촬영 디지털 시안</h1>
+            <p class="text-lg md:text-xl text-zinc-600 mb-8">어바이드 스튜디오 (구 그가사랑하는순간)</p>
+            
+            <div class="inline-flex flex-col bg-white px-8 py-6 rounded-2xl shadow-sm border border-rose-100">
+                <span class="text-sm text-rose-400 font-semibold tracking-wider uppercase mb-2">D-Day Countdown</span>
+                <div id="countdown" class="text-3xl font-bold text-zinc-700 tracking-tight">계산 중...</div>
+                <div class="text-sm text-zinc-500 mt-2">2026년 10월 24일 오전 10시 (예정)</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-24">
+
+        <section id="overview" class="scroll-mt-24">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">1. 전체 무드 & 기본 정보</h2>
+                <p class="text-zinc-600 leading-relaxed">
+                    이 섹션은 촬영의 전반적인 분위기와 스태프들이 확인해야 할 샵 정보를 요약하여 제공합니다. 신랑 신부의 선호하는 얼굴 방향을 명시하여 작가님이 최적의 앵글을 빠르게 찾을 수 있도록 돕습니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                    <div class="text-2xl mb-3">✨</div>
+                    <h3 class="font-bold text-lg mb-2 text-zinc-800">우리가 원하는 무드</h3>
+                    <ul class="text-zinc-600 space-y-2 text-sm">
+                        <li><b class="text-zinc-700">분위기:</b> 맑고 깨끗한 느낌, 자연스러운 미소, 클래식한 무드</li>
+                        <li><b class="text-zinc-700">색감 톤:</b> 따뜻한 피치톤 및 선명한 색감</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                    <div class="text-2xl mb-3">📸</div>
+                    <h3 class="font-bold text-lg mb-2 text-zinc-800">얼굴 선호 방향</h3>
+                    <div class="flex flex-col space-y-3 mt-4">
+                        <div class="flex items-center justify-between p-3 bg-rose-50 rounded-lg">
+                            <span class="font-medium text-zinc-700">👰‍♀️ 신부</span>
+                            <span class="bg-white px-3 py-1 rounded shadow-sm text-sm text-rose-500 font-bold">오른쪽 얼굴</span>
+                        </div>
+                        <div class="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                            <span class="font-medium text-zinc-700">🤵‍♂️ 신랑</span>
+                            <span class="bg-white px-3 py-1 rounded shadow-sm text-sm text-blue-500 font-bold">왼쪽 얼굴</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 lg:col-span-1 md:col-span-2">
+                    <div class="text-2xl mb-3">🏢</div>
+                    <h3 class="font-bold text-lg mb-2 text-zinc-800">협력 업체 정보</h3>
+                    <div class="grid grid-cols-2 gap-4 text-sm text-zinc-600">
+                        <div>
+                            <span class="block text-xs text-zinc-400 mb-1">드레스 샵</span>
+                            <span class="font-medium text-zinc-700">OOO 드레스</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-zinc-400 mb-1">메이크업</span>
+                            <span class="font-medium text-zinc-700">OOO (지정 원장)</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-zinc-400 mb-1">헤어 변형</span>
+                            <span class="font-medium text-zinc-700">OOO (3시간 진행)</span>
+                        </div>
+                        <div>
+                            <span class="block text-xs text-zinc-400 mb-1">예복 (테일러샵)</span>
+                            <span class="font-medium text-zinc-700">OOO 테일러</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="timeline" class="scroll-mt-24">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">2. 의상 및 헤어 변형 흐름</h2>
+                <p class="text-zinc-600 leading-relaxed">
+                    드레스, 예복, 헤어스타일의 변경 순서를 시각화한 타임라인입니다. 우측의 차트는 4벌의 의상을 소화하기 위한 예상 시간 분배를 나타내어 헤어변형 원장님과 이모님의 동선 계획 및 시간 관리를 지원합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-200">
+                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">1</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                            <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium">풍성 (실크/레이스)</span></div>
+                            <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium">긴 머리 웨이브 (푼 머리)</span></div>
+                            <div><span class="text-xs text-zinc-400 block">신랑 예복</span><span class="font-medium">블랙 정장 + 보타이</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-300">
+                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">2</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                            <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium">슬림 (실크)</span></div>
+                            <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium">반묶음 (생화 장식)</span></div>
+                            <div><span class="text-xs text-zinc-400 block">신랑 예복</span><span class="font-medium">네이비 / 다크그레이</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-400">
+                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">3</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                            <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium">슬림 (레이스/비즈)</span></div>
+                            <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium">로우 포니테일</span></div>
+                            <div><span class="text-xs text-zinc-400 block">신랑 예복</span><span class="font-medium">베이지 정장</span></div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center p-5 bg-white rounded-xl shadow-sm border-l-4 border-rose-500">
+                        <div class="w-12 h-12 bg-rose-50 rounded-full flex items-center justify-center text-rose-500 font-bold text-xl mr-6 shrink-0">4</div>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
+                            <div><span class="text-xs text-zinc-400 block">신부 드레스</span><span class="font-medium">유색 드레스 / 캐주얼</span></div>
+                            <div><span class="text-xs text-zinc-400 block">헤어 스타일</span><span class="font-medium">로우 번 (가시번 등)</span></div>
+                            <div><span class="text-xs text-zinc-400 block">신랑 예복</span><span class="font-medium">캐주얼 / 니트</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 flex flex-col items-center justify-center">
+                    <h3 class="text-center font-bold text-zinc-700 mb-4">예상 소요 시간 배분 (총 4~5시간)</h3>
+                    <div class="chart-container">
+                        <canvas id="timeChart"></canvas>
+                    </div>
+                    <p class="text-xs text-zinc-400 mt-4 text-center">※ 현장 상황에 따라 유동적으로 변경될 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="scenes" class="scroll-mt-24">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">3. 스튜디오 씬별 촬영 계획</h2>
+                <p class="text-zinc-600 leading-relaxed">
+                    어바이드 스튜디오의 시그니처 공간들을 바탕으로 기획한 주요 촬영 씬입니다. 각 카드를 클릭하여 해당 씬에 맞는 의상 매칭과 포즈, 무드 등의 상세 디테일을 확인하세요.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="toggleScene('scene1')">
+                    <div class="bg-stone-100 p-8 text-center border-b border-stone-200">
+                        <span class="text-5xl">🪟</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-zinc-800">씬 1: 시그니처 창가씬</h3>
+                            <span class="text-rose-500 text-sm font-medium">자연광 느낌</span>
+                        </div>
+                        <p class="text-zinc-500 text-sm mb-4">클릭하여 디테일 보기 ▾</p>
+                        <div id="scene1" class="hidden mt-4 pt-4 border-t border-stone-100 space-y-3 text-sm">
+                            <div class="flex"><span class="w-16 text-zinc-400">의상</span><span class="flex-1 text-zinc-700"><b>신부:</b> 풍성 드레스 <br> <b>신랑:</b> 블랙 정장</span></div>
+                            <div class="flex"><span class="w-16 text-zinc-400">포즈</span><span class="flex-1 text-zinc-700">신랑이 신부 뒤에서 가볍게 백허그, 자연스럽게 창밖을 바라보는 컷</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="toggleScene('scene2')">
+                    <div class="bg-rose-50 p-8 text-center border-b border-stone-200">
+                        <span class="text-5xl">⬜</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-zinc-800">씬 2: 단색 배경씬</h3>
+                            <span class="text-rose-500 text-sm font-medium">인물 중심</span>
+                        </div>
+                        <p class="text-zinc-500 text-sm mb-4">클릭하여 디테일 보기 ▾</p>
+                        <div id="scene2" class="hidden mt-4 pt-4 border-t border-stone-100 space-y-3 text-sm">
+                            <div class="flex"><span class="w-16 text-zinc-400">의상</span><span class="flex-1 text-zinc-700"><b>신부:</b> 슬림 실크 <br> <b>신랑:</b> 네이비 정장</span></div>
+                            <div class="flex"><span class="w-16 text-zinc-400">포즈</span><span class="flex-1 text-zinc-700">정면을 보고 활짝 웃는 컷 (청첩장 메인용), 서로 코 맞대고 있는 컷</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="toggleScene('scene3')">
+                    <div class="bg-stone-100 p-8 text-center border-b border-stone-200">
+                        <span class="text-5xl">🛋️</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-zinc-800">씬 3: 소파씬 / 계단씬</h3>
+                            <span class="text-rose-500 text-sm font-medium">클래식 무드</span>
+                        </div>
+                        <p class="text-zinc-500 text-sm mb-4">클릭하여 디테일 보기 ▾</p>
+                        <div id="scene3" class="hidden mt-4 pt-4 border-t border-stone-100 space-y-3 text-sm">
+                            <div class="flex"><span class="w-16 text-zinc-400">의상</span><span class="flex-1 text-zinc-700"><b>신부:</b> 풍성 드레스 (계단에 넓게 펼치기) <br> <b>신랑:</b> 대여복</span></div>
+                            <div class="flex"><span class="w-16 text-zinc-400">포즈</span><span class="flex-1 text-zinc-700">신부는 앉아있고 신랑은 서서 기대있는 클래식하고 우아한 무드</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-stone-200 overflow-hidden cursor-pointer hover:shadow-md transition-shadow" onclick="toggleScene('scene4')">
+                    <div class="bg-stone-800 p-8 text-center border-b border-stone-200">
+                        <span class="text-5xl">✨</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="font-bold text-xl text-zinc-800">씬 4: 컨페티 / 스파클라씬</h3>
+                            <span class="text-rose-500 text-sm font-medium">야간 촬영</span>
+                        </div>
+                        <p class="text-zinc-500 text-sm mb-4">클릭하여 디테일 보기 ▾</p>
+                        <div id="scene4" class="hidden mt-4 pt-4 border-t border-stone-100 space-y-3 text-sm">
+                            <div class="flex"><span class="w-16 text-zinc-400">의상</span><span class="flex-1 text-zinc-700"><b>신부:</b> 유색 드레스 <br> <b>신랑:</b> 베이지 정장</span></div>
+                            <div class="flex"><span class="w-16 text-zinc-400">포즈</span><span class="flex-1 text-zinc-700">활기차고 장난스러운 표정, 컨페티가 날릴 때 카메라 보며 환하게 웃기</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="rules" class="scroll-mt-24">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">4. MUST DO & DO NOT</h2>
+                <p class="text-zinc-600 leading-relaxed">
+                    촬영 간 절대 놓치고 싶지 않은 필수 컷들과 피하고 싶은 연출을 정리했습니다. 촬영 전 작가님과 미팅 시 이 부분을 중점적으로 커뮤니케이션합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-green-50 p-6 rounded-2xl border border-green-100">
+                    <h3 class="font-bold text-xl text-green-800 mb-4 flex items-center">
+                        <span class="mr-2">💚</span> 꼭 찍고 싶은 씬
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2 mt-1">✓</span>
+                            <div>
+                                <strong class="text-green-900 block">반지 컷</strong>
+                                <span class="text-green-700 text-sm">두 사람의 웨딩 밴드를 낀 손을 클로즈업해서 감성적으로 찍어주세요.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2 mt-1">✓</span>
+                            <div>
+                                <strong class="text-green-900 block">단독 컷</strong>
+                                <span class="text-green-700 text-sm">신부의 베일 날리는 씬, 신랑의 정장 자켓 여미는 흑백 단독 컷.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-green-500 mr-2 mt-1">✓</span>
+                            <div>
+                                <strong class="text-green-900 block">청첩장용 컷</strong>
+                                <span class="text-green-700 text-sm">여백이 많아서 글씨를 넣기 좋은 정면 컷이 꼭 필요합니다.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 p-6 rounded-2xl border border-red-100">
+                    <h3 class="font-bold text-xl text-red-800 mb-4 flex items-center">
+                        <span class="mr-2">🚫</span> 피하고 싶은 씬
+                    </h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 mt-1">✕</span>
+                            <div>
+                                <strong class="text-red-900 block">과도한 스킨십 연출</strong>
+                                <span class="text-red-700 text-sm">뽀뽀하는 씬 등 민망한 연출은 너무 많지 않았으면 좋겠습니다.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 mt-1">✕</span>
+                            <div>
+                                <strong class="text-red-900 block">코믹/발랄한 포즈</strong>
+                                <span class="text-red-700 text-sm">클래식하고 진중한 무드를 선호하므로 과하게 코믹한 포즈는 피해주세요.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2 mt-1">✕</span>
+                            <div>
+                                <strong class="text-red-900 block">특정 콤플렉스 각도</strong>
+                                <span class="text-red-700 text-sm">신부의 오른쪽 턱선이 콤플렉스라 그쪽 각도 클로즈업은 지양합니다.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="checklist" class="scroll-mt-24 pb-24">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-zinc-800 mb-4">5. 촬영 준비물 체크리스트</h2>
+                <p class="text-zinc-600 leading-relaxed">
+                    D-1 및 촬영 당일 챙겨야 할 물품들을 대화형 체크리스트로 구성했습니다. 각 항목을 클릭하여 짐을 챙길 때마다 진행도를 시각적으로 확인하며 빠진 것이 없는지 체크하세요.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="lg:col-span-2 space-y-6" id="checklist-container">
+                    
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                        <h3 class="font-bold text-lg text-rose-500 mb-4 border-b border-stone-100 pb-2 flex items-center">
+                            <span class="text-2xl mr-2">👰‍♀️</span> 신부 준비물
+                        </h3>
+                        <div class="space-y-3 text-zinc-700">
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-rose-500 rounded border-stone-300 focus:ring-rose-500">
+                                <span>누브라 / 심리스 팬티 (스킨톤)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-rose-500 rounded border-stone-300 focus:ring-rose-500">
+                                <span>웨딩 슈즈 (대여/구매) 및 편하게 신을 슬리퍼</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-rose-500 rounded border-stone-300 focus:ring-rose-500">
+                                <span>촬영용 생화 부케 / 서브 부케 / 헤어 변형 잔꽃</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-rose-500 rounded border-stone-300 focus:ring-rose-500">
+                                <span>제모 및 네일/패디 완료 확인</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-rose-500 rounded border-stone-300 focus:ring-rose-500">
+                                <span>소프트/일회용 렌즈 (안경 착용 시 빛 반사 방지)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                        <h3 class="font-bold text-lg text-blue-500 mb-4 border-b border-stone-100 pb-2 flex items-center">
+                            <span class="text-2xl mr-2">🤵‍♂️</span> 신랑 준비물
+                        </h3>
+                        <div class="space-y-3 text-zinc-700">
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-blue-500 rounded border-stone-300 focus:ring-blue-500">
+                                <span>예복 및 대여복 픽업</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-blue-500 rounded border-stone-300 focus:ring-blue-500">
+                                <span>맞춤 셔츠 / 촬영용 넥타이 & 보타이</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-blue-500 rounded border-stone-300 focus:ring-blue-500">
+                                <span>검정 긴 양말 (발목 덮는 기장) / 흰 양말</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-blue-500 rounded border-stone-300 focus:ring-blue-500">
+                                <span>구두 (블랙/브라운) 및 키높이 구두</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-blue-500 rounded border-stone-300 focus:ring-blue-500">
+                                <span>면도 / 헤어 커트 완료 (구레나룻, 뒷목 라인 정리)</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+                        <h3 class="font-bold text-lg text-zinc-800 mb-4 border-b border-stone-100 pb-2 flex items-center">
+                            <span class="text-2xl mr-2">📦</span> 공통 준비물
+                        </h3>
+                        <div class="space-y-3 text-zinc-700">
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-zinc-800 rounded border-stone-300 focus:ring-zinc-800">
+                                <span>웨딩 밴드 (반지 샷 촬영용)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-zinc-800 rounded border-stone-300 focus:ring-zinc-800">
+                                <span>촬영 소품: 컨페티, 비눗방울, 레터링 풍선 등</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-zinc-800 rounded border-stone-300 focus:ring-zinc-800">
+                                <span>헬퍼 이모님 비용 (현금/예쁜 봉투)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-zinc-800 rounded border-stone-300 focus:ring-zinc-800">
+                                <span>헤어 변형 비용 (잔금 현금/이체 준비)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-zinc-800 rounded border-stone-300 focus:ring-zinc-800">
+                                <span>스탭 간식 (한입거리 간식, 빨대 꽂힌 커피/생수)</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer p-2 hover:bg-stone-50 rounded transition-colors">
+                                <input type="checkbox" class="check-item w-5 h-5 text-zinc-800 rounded border-stone-300 focus:ring-zinc-800">
+                                <span>보조배터리 및 스마트폰 용량 비워두기</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-stone-200 sticky top-24 h-fit">
+                    <h3 class="text-center font-bold text-zinc-800 mb-2">준비물 챙기기 진행도</h3>
+                    <div class="text-center text-4xl font-bold text-rose-500 mb-6" id="progress-text">0%</div>
+                    <div class="chart-container">
+                        <canvas id="progressChart"></canvas>
+                    </div>
+                    <p class="text-xs text-zinc-400 mt-6 text-center">모든 항목을 체크하여 완벽한 촬영을 준비하세요!</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-zinc-800 text-zinc-400 py-8 text-center text-sm">
+        <p>Prepared for the perfect moment at Abide Studio.</p>
+    </footer>
+
+    <script>
+        const targetDate = new Date("2026-10-24T10:00:00").getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("countdown").innerHTML = "촬영 당일입니다!";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            document.getElementById("countdown").innerHTML = `D-${days}`;
+        }
+        
+        setInterval(updateCountdown, 60000);
+        updateCountdown();
+
+        function toggleScene(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        const ctxTime = document.getElementById('timeChart').getContext('2d');
+        const timeChart = new Chart(ctxTime, {
+            type: 'doughnut',
+            data: {
+                labels: ['1벌 (풍성/첫 촬영)', '2벌 (슬림/변형)', '3벌 (슬림/레이스)', '4벌 (유색/야간)'],
+                datasets: [{
+                    data: [30, 25, 25, 20],
+                    backgroundColor: [
+                        'rgba(251, 113, 133, 0.8)', 
+                        'rgba(244, 63, 94, 0.8)',   
+                        'rgba(225, 29, 72, 0.8)',   
+                        'rgba(159, 18, 57, 0.8)'    
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { family: "'Noto Sans KR', sans-serif" }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.label + ': 약 ' + context.parsed + '% 소요';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const checkboxes = document.querySelectorAll('.check-item');
+        const totalItems = checkboxes.length;
+        const progressText = document.getElementById('progress-text');
+        
+        const ctxProgress = document.getElementById('progressChart').getContext('2d');
+        const progressChart = new Chart(ctxProgress, {
+            type: 'doughnut',
+            data: {
+                labels: ['준비 완료', '남은 항목'],
+                datasets: [{
+                    data: [0, totalItems],
+                    backgroundColor: [
+                        '#10b981', 
+                        '#e5e7eb'  
+                    ],
+                    borderWidth: 0,
+                    cutout: '75%'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: { enabled: false }
+                },
+                animation: { animateScale: true }
+            }
+        });
+
+        function updateProgress() {
+            let checkedCount = 0;
+            checkboxes.forEach(cb => {
+                if(cb.checked) checkedCount++;
+            });
+
+            const percent = Math.round((checkedCount / totalItems) * 100);
+            progressText.innerText = percent + '%';
+
+            if(percent === 100) {
+                progressText.classList.remove('text-rose-500');
+                progressText.classList.add('text-green-500');
+            } else {
+                progressText.classList.remove('text-green-500');
+                progressText.classList.add('text-rose-500');
+            }
+
+            progressChart.data.datasets[0].data = [checkedCount, totalItems - checkedCount];
+            progressChart.update();
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateProgress);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
