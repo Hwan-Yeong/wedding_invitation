@@ -232,6 +232,30 @@
                     <div class="chart-container">
                         <canvas id="timeChart"></canvas>
                     </div>
+                    <!-- 비중 입력 패널 추가 -->
+                    <div class="w-full mt-6 space-y-2">
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-rose-400 font-medium">1벌 (풍성)</span>
+                            <div class="flex items-center"><input type="number" data-field="pct_1" value="30" min="0" max="100" class="chart-input w-16 border border-stone-200 rounded px-2 py-1 text-center text-zinc-700 focus:outline-none focus:border-rose-400"> <span class="ml-1 text-zinc-400 w-4">%</span></div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-rose-500 font-medium">2벌 (슬림)</span>
+                            <div class="flex items-center"><input type="number" data-field="pct_2" value="25" min="0" max="100" class="chart-input w-16 border border-stone-200 rounded px-2 py-1 text-center text-zinc-700 focus:outline-none focus:border-rose-400"> <span class="ml-1 text-zinc-400 w-4">%</span></div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-rose-600 font-medium">3벌 (레이스)</span>
+                            <div class="flex items-center"><input type="number" data-field="pct_3" value="25" min="0" max="100" class="chart-input w-16 border border-stone-200 rounded px-2 py-1 text-center text-zinc-700 focus:outline-none focus:border-rose-400"> <span class="ml-1 text-zinc-400 w-4">%</span></div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-rose-800 font-medium">4벌 (유색)</span>
+                            <div class="flex items-center"><input type="number" data-field="pct_4" value="20" min="0" max="100" class="chart-input w-16 border border-stone-200 rounded px-2 py-1 text-center text-zinc-700 focus:outline-none focus:border-rose-400"> <span class="ml-1 text-zinc-400 w-4">%</span></div>
+                        </div>
+                        <div class="pt-2 mt-2 border-t border-stone-100 flex items-center justify-between text-sm font-bold">
+                            <span class="text-zinc-700">총합</span>
+                            <span id="pct_total" class="text-zinc-700">100%</span>
+                        </div>
+                        <p id="pct_warning" class="text-xs text-red-500 hidden text-center mt-1 bg-red-50 py-1 rounded">총합이 100%가 되도록 맞춰주세요.</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -591,12 +615,44 @@
         }
         setInterval(updateCountdown, 60000);
 
+        // 시간 배분 차트 초기화 및 업데이트 함수
+        let timeChartInstance = null;
         const ctxTime = document.getElementById('timeChart').getContext('2d');
-        new Chart(ctxTime, {
+        timeChartInstance = new Chart(ctxTime, {
             type: 'doughnut',
             data: { labels: ['1벌 (풍성)', '2벌 (슬림)', '3벌 (레이스)', '4벌 (유색)'], datasets: [{ data: [30, 25, 25, 20], backgroundColor: ['rgba(251, 113, 133, 0.8)', 'rgba(244, 63, 94, 0.8)', 'rgba(225, 29, 72, 0.8)', 'rgba(159, 18, 57, 0.8)'], borderWidth: 0 }] },
             options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
         });
+
+        window.updateTimeChartVisuals = function() {
+            let values = [];
+            let sum = 0;
+            document.querySelectorAll('.chart-input').forEach(el => {
+                let v = parseInt(el.value) || 0;
+                values.push(v);
+                sum += v;
+            });
+            
+            const totalEl = document.getElementById('pct_total');
+            const warnEl = document.getElementById('pct_warning');
+            
+            totalEl.innerText = sum + '%';
+            if(sum !== 100) {
+                totalEl.classList.replace('text-zinc-700', 'text-red-500');
+                warnEl.innerText = "총합이 100%가 되도록 맞춰주세요.";
+                warnEl.classList.replace('text-blue-500', 'text-red-500');
+                warnEl.classList.replace('bg-blue-50', 'bg-red-50');
+                warnEl.classList.remove('hidden');
+            } else {
+                totalEl.classList.replace('text-red-500', 'text-zinc-700');
+                warnEl.classList.add('hidden');
+            }
+
+            if(timeChartInstance) {
+                timeChartInstance.data.datasets[0].data = values;
+                timeChartInstance.update();
+            }
+        };
 
         // 2. 공통 UI 조작 로직 (이미지 토글)
         window.updateImageUI = function(fieldName, base64) {
@@ -705,8 +761,36 @@
             const fieldName = el.getAttribute('data-field');
             if (el.type === 'checkbox') {
                 el.addEventListener('change', (e) => { saveToDb(fieldName, e.target.checked); window.updateProgress(); });
-            } else if (el.type === 'date') {
-                el.addEventListener('change', (e) => { saveToDb(fieldName, e.target.value); updateCountdown(); });
+            } else if (el.type === 'date' || el.type === 'number') {
+                if (el.classList.contains('chart-input')) {
+                    // 실시간 차트 업데이트 (입력 중)
+                    el.addEventListener('input', () => { window.updateTimeChartVisuals(); });
+                    
+                    // 값 입력 완료 시 총합 100 제한 검사 및 저장
+                    el.addEventListener('change', (e) => {
+                        let sum = 0;
+                        document.querySelectorAll('.chart-input').forEach(input => sum += parseInt(input.value)||0);
+                        if(sum > 100) {
+                            let over = sum - 100;
+                            let currentVal = parseInt(e.target.value)||0;
+                            e.target.value = Math.max(0, currentVal - over);
+                            
+                            const warnEl = document.getElementById('pct_warning');
+                            warnEl.innerText = "총합 100% 초과로 자동 조정되었습니다.";
+                            warnEl.classList.replace('text-red-500', 'text-blue-500');
+                            warnEl.classList.replace('bg-red-50', 'bg-blue-50');
+                            warnEl.classList.remove('hidden');
+                            setTimeout(() => warnEl.classList.add('hidden'), 3000);
+                        }
+                        window.updateTimeChartVisuals();
+                        saveToDb(fieldName, e.target.value);
+                    });
+                } else {
+                    el.addEventListener('change', (e) => { 
+                        saveToDb(fieldName, e.target.value); 
+                        if (el.id === 'dday-input') updateCountdown(); 
+                    });
+                }
             } else {
                 el.setAttribute('contenteditable', 'true');
                 el.classList.add('editable');
@@ -754,7 +838,7 @@
                             const fieldName = el.getAttribute('data-field');
                             if (data[fieldName] !== undefined) {
                                 if (el.type === 'checkbox') el.checked = data[fieldName];
-                                else if (el.type === 'date') el.value = data[fieldName];
+                                else if (el.type === 'date' || el.type === 'number') el.value = data[fieldName];
                                 else if (document.activeElement !== el && el.innerText !== data[fieldName]) {
                                     el.innerText = data[fieldName];
                                 }
@@ -762,6 +846,7 @@
                         });
                         window.updateProgress();
                         updateCountdown();
+                        window.updateTimeChartVisuals(); // 차트 데이터 동기화
                         isUpdatingFromRemote = false;
                     }
                 });
@@ -788,7 +873,7 @@
                 const savedVal = localStorage.getItem(fieldName);
                 if (savedVal !== null) {
                     if (el.type === 'checkbox') el.checked = (savedVal === 'true');
-                    else if (el.type === 'date') el.value = savedVal;
+                    else if (el.type === 'date' || el.type === 'number') el.value = savedVal;
                     else el.innerText = savedVal;
                 }
             });
@@ -801,6 +886,7 @@
 
             window.updateProgress();
             updateCountdown();
+            window.updateTimeChartVisuals(); // 차트 데이터 동기화
         }
     </script>
 </body>
